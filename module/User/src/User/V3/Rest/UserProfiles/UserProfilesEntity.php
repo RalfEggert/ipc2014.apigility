@@ -16,7 +16,12 @@ class UserProfilesEntity
     /**
      * @var string
      */
-    protected $name;
+    protected $firstname;
+
+    /**
+     * @var string
+     */
+    protected $lastname;
 
     /**
      * @var string
@@ -50,19 +55,35 @@ class UserProfilesEntity
     }
 
     /**
-     * @param string $name
+     * @return string
      */
-    public function setName($name)
+    public function getFirstname()
     {
-        $this->name = $name;
+        return $this->firstname;
+    }
+
+    /**
+     * @param string $firstname
+     */
+    public function setFirstname($firstname)
+    {
+        $this->firstname = $firstname;
     }
 
     /**
      * @return string
      */
-    public function getName()
+    public function getLastname()
     {
-        return $this->name;
+        return $this->lastname;
+    }
+
+    /**
+     * @param string $lastname
+     */
+    public function setLastname($lastname)
+    {
+        $this->lastname = $lastname;
     }
 
     /**
