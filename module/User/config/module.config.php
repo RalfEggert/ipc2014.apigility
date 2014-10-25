@@ -11,11 +11,21 @@ return array(
                     ),
                 ),
             ),
+            'user.rest.user-profiles' => array(
+                'type' => 'Segment',
+                'options' => array(
+                    'route' => '/user-profiles[/:user_id]',
+                    'defaults' => array(
+                        'controller' => 'User\\V3\\Rest\\UserProfiles\\Controller',
+                    ),
+                ),
+            ),
         ),
     ),
     'zf-versioning' => array(
         'uri' => array(
             0 => 'user.rest.users',
+            1 => 'user.rest.user-profiles',
         ),
         'default_version' => 3,
     ),
@@ -94,12 +104,31 @@ return array(
             'collection_class' => 'User\\V3\\Rest\\Users\\UsersCollection',
             'service_name' => 'Users',
         ),
+        'User\\V3\\Rest\\UserProfiles\\Controller' => array(
+            'listener' => 'User\\V3\\Rest\\UserProfiles\\UserProfilesResource',
+            'route_name' => 'user.rest.user-profiles',
+            'route_identifier_name' => 'user_id',
+            'collection_name' => 'user_profiles',
+            'entity_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_http_methods' => array(
+                0 => 'GET',
+            ),
+            'collection_query_whitelist' => array(),
+            'page_size' => 25,
+            'page_size_param' => null,
+            'entity_class' => 'User\\V3\\Rest\\UserProfiles\\UserProfilesEntity',
+            'collection_class' => 'User\\V3\\Rest\\UserProfiles\\UserProfilesCollection',
+            'service_name' => 'UserProfiles',
+        ),
     ),
     'zf-content-negotiation' => array(
         'controllers' => array(
             'User\\V1\\Rest\\Users\\Controller' => 'HalJson',
             'User\\V2\\Rest\\Users\\Controller' => 'HalJson',
             'User\\V3\\Rest\\Users\\Controller' => 'HalJson',
+            'User\\V3\\Rest\\UserProfiles\\Controller' => 'HalJson',
         ),
         'accept_whitelist' => array(
             'User\\V1\\Rest\\Users\\Controller' => array(
@@ -120,6 +149,11 @@ return array(
                 1 => 'application/hal+json',
                 2 => 'application/json',
             ),
+            'User\\V3\\Rest\\UserProfiles\\Controller' => array(
+                0 => 'application/vnd.user.v3+json',
+                1 => 'application/hal+json',
+                2 => 'application/json',
+            ),
         ),
         'content_type_whitelist' => array(
             'User\\V1\\Rest\\Users\\Controller' => array(
@@ -133,6 +167,10 @@ return array(
                 1 => 'application/json',
             ),
             'User\\V3\\Rest\\Users\\Controller' => array(
+                0 => 'application/vnd.user.v3+json',
+                1 => 'application/json',
+            ),
+            'User\\V3\\Rest\\UserProfiles\\Controller' => array(
                 0 => 'application/vnd.user.v3+json',
                 1 => 'application/json',
             ),
@@ -176,6 +214,18 @@ return array(
                 'route_identifier_name' => 'users_id',
                 'is_collection' => '1',
             ),
+            'User\\V3\\Rest\\UserProfiles\\UserProfilesEntity' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'user.rest.user-profiles',
+                'route_identifier_name' => 'user_id',
+                'hydrator' => 'Zend\\Stdlib\\Hydrator\\ClassMethods',
+            ),
+            'User\\V3\\Rest\\UserProfiles\\UserProfilesCollection' => array(
+                'entity_identifier_name' => 'id',
+                'route_name' => 'user.rest.user-profiles',
+                'route_identifier_name' => 'user_id',
+                'is_collection' => true,
+            ),
         ),
     ),
     'zf-apigility' => array(
@@ -217,6 +267,9 @@ return array(
         ),
         'User\\V3\\Rest\\Users\\Controller' => array(
             'input_filter' => 'User\\V3\\Rest\\Users\\Validator',
+        ),
+        'User\\V3\\Rest\\UserProfiles\\Controller' => array(
+            'input_filter' => 'User\\V3\\Rest\\UserProfiles\\Validator',
         ),
     ),
     'input_filter_specs' => array(
@@ -522,6 +575,44 @@ return array(
                 'error_message' => 'User firstname must be a valid email address',
             ),
         ),
+        'User\\V3\\Rest\\UserProfiles\\Validator' => array(
+            0 => array(
+                'name' => 'id',
+                'required' => true,
+                'filters' => array(),
+                'validators' => array(),
+            ),
+            1 => array(
+                'name' => 'firstname',
+                'required' => true,
+                'filters' => array(),
+                'validators' => array(),
+            ),
+            2 => array(
+                'name' => 'lastname',
+                'required' => true,
+                'filters' => array(),
+                'validators' => array(),
+            ),
+            3 => array(
+                'name' => 'email',
+                'required' => true,
+                'filters' => array(),
+                'validators' => array(),
+            ),
+            4 => array(
+                'name' => 'websites',
+                'required' => true,
+                'filters' => array(),
+                'validators' => array(),
+            ),
+            5 => array(
+                'name' => 'contacts',
+                'required' => true,
+                'filters' => array(),
+                'validators' => array(),
+            ),
+        ),
     ),
     'zf-mvc-auth' => array(
         'authorization' => array(
@@ -573,6 +664,13 @@ return array(
                     'DELETE' => '',
                 ),
             ),
+        ),
+    ),
+    'service_manager' => array(
+        'factories' => array(
+            'User\\V3\\Rest\\UserProfiles\\UserProfilesResource' => 'User\\V3\\Rest\\UserProfiles\\UserProfilesResourceFactory',
+            'User\\V3\\Rest\\UserProfiles\\Table\\UserTable' => 'User\\V3\\Rest\\UserProfiles\\Table\\UserTableFactory',
+            'User\\V3\\Rest\\UserProfiles\\Table\\WebsiteTable' => 'User\\V3\\Rest\\UserProfiles\\Table\\WebsiteTableFactory',
         ),
     ),
 );
