@@ -11,17 +11,18 @@ CREATE TABLE IF NOT EXISTS `users` (
   `firstname` varchar(32) NOT NULL,
   `lastname` varchar(32) NOT NULL,
   `email` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 COMMENT='Users Table' AUTO_INCREMENT=8 ;
 
 INSERT INTO `users` (`id`, `firstname`, `lastname`, `email`) VALUES
-(1, 'Ralf', 'Eggert', 'ralf@travello.com'),
-(2, 'Horst', 'Tester', 'horst@tester.de'),
-(3, 'Peter', 'Lustig', 'peter@lustig.de'),
-(4, 'Manfred', 'Mustermann', 'manfred@mustermann.de'),
-(5, 'Flitz', 'Piepe', 'flitz@piepe.de'),
-(6, 'Peter', 'Alexander', 'peter@alexander.de'),
-(7, 'Peter', 'Petersen', 'peter@petersen.de');
+(1, 'Ralf', 'Eggert', 'ralf@travello.com', ''),
+(2, 'Horst', 'Tester', 'horst@tester.de', ''),
+(3, 'Peter', 'Lustig', 'peter@lustig.de', ''),
+(4, 'Manfred', 'Mustermann', 'manfred@mustermann.de', ''),
+(5, 'Flitz', 'Piepe', 'flitz@piepe.de', ''),
+(6, 'Peter', 'Alexander', 'peter@alexander.de', ''),
+(7, 'Peter', 'Petersen', 'peter@petersen.de', '');
 
 DROP TABLE IF EXISTS `user_contacts`;
 CREATE TABLE IF NOT EXISTS `user_contacts` (
