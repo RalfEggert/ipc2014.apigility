@@ -9,4 +9,7 @@ return array(
     'User\\V3\\Rest\\Users\\Controller' => array(
         'description' => 'User rest service',
     ),
+    'User\\V4\\Rest\\Users\\Controller' => array(
+        'description' => 'User rest service',
+    ),
 );

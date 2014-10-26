@@ -1,5 +1,5 @@
 <?php
-namespace User\V3\Rest\UserProfiles\Table;
+namespace User\V4\Rest\UserProfiles\Table;
 
 use Zend\Db\Adapter\AdapterInterface;
 use Zend\Db\ResultSet\ResultSetInterface;
@@ -8,7 +8,7 @@ use Zend\Db\TableGateway\TableGateway;
 /**
  * Class WebsiteTable
  *
- * @package User\V3\Rest\UserProfiles\Table
+ * @package User\V4\Rest\UserProfiles\Table
  */
 class WebsiteTable extends TableGateway
 {

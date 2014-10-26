@@ -1,5 +1,5 @@
 <?php
-namespace User\V3\Rest\UserProfiles\Table;
+namespace User\V4\Rest\UserProfiles\Table;
 
 use Zend\Db\ResultSet\ResultSet;
 use Zend\ServiceManager\FactoryInterface;
@@ -8,7 +8,7 @@ use Zend\ServiceManager\ServiceLocatorInterface;
 /**
  * Class UserTableFactory
  *
- * @package User\V3\Rest\UserProfiles\Table
+ * @package User\V4\Rest\UserProfiles\Table
  */
 class UserTableFactory implements FactoryInterface
 {

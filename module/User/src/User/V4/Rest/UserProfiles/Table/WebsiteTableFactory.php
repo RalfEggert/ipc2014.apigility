@@ -1,16 +1,16 @@
 <?php
-namespace User\V3\Rest\UserProfiles\Table;
+namespace User\V4\Rest\UserProfiles\Table;
 
 use Zend\Db\ResultSet\ResultSet;
 use Zend\ServiceManager\FactoryInterface;
 use Zend\ServiceManager\ServiceLocatorInterface;
 
 /**
- * Class UserTableFactory
+ * Class WebsiteTableFactory
  *
- * @package User\V3\Rest\UserProfiles\Table
+ * @package User\V4\Rest\UserProfiles\Table
  */
-class UserTableFactory implements FactoryInterface
+class WebsiteTableFactory implements FactoryInterface
 {
     /**
      * Create service
@@ -23,8 +23,8 @@ class UserTableFactory implements FactoryInterface
     {
         $dbAdapter = $serviceLocator->get('MysqlAdapter');
         $resultSet = new ResultSet(ResultSet::TYPE_ARRAY);
-        $table     = new UserTable($dbAdapter, $resultSet);
+        $table     = new WebsiteTable($dbAdapter, $resultSet);
 
         return $table;
     }
-}
+} 
