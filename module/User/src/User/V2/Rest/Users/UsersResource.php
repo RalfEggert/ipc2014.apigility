@@ -18,4 +18,4 @@ class UsersResource extends DbConnectedResource
 
         return new $this->collectionClass($adapter);
     }
-} 
+}
